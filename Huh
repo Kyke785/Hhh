@@ -1,51 +1,107 @@
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local SolarisLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Stebulous/solaris-ui-lib/main/source.lua"))()
 
-local Window = Rayfield:CreateWindow({
-   Name = "keys",
-   LoadingTitle = "key22",
-   LoadingSubtitle = "by lua",
-   ConfigurationSaving = {
-      Enabled = true,
-      FolderName = nil, -- Create a custom folder for your hub/game
-      FileName = "Big Hub"
-   },
-   Discord = {
-      Enabled = false,
-      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
-      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
-   },
-   KeySystem = false, -- Set this to true to use our key system
-   KeySettings = {
-      Title = "Untitled",
-      Subtitle = "Key System",
-      Note = "No method of obtaining the key is provided",
-      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
-      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
-      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-      Key = {"botv"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
-   }
+--[[SolarisLib:New({
+      Name - Title of the UI <string>
+        FolderToSave - Name of the folder where the UI files will be stored <string>
+})]]
+local win = SolarisLib:New({
+      Name = "luahub",
+        FolderToSave = "luastuff"
 })
 
-Rayfield:Notify({
-   Title = "key",
-   Content = "Notification Content",
-   Duration = 6.5,
-   Image = 4483362458,
-   Actions = { -- Notification Buttons
-      Ignore = {
-         Name = "Okay!",
-         Callback = function()
-         print("The user tapped Okay!")
-      end
-   },
-},
-})
+--win:Tab(title <string>)
+local tab = win:Tab("Tab 1")
 
-local Button = Tab:CreateButton({
-   Name = "main thing"",
-   Callback = function()
-   loadstring(game:HttpGet("https://raw.githubusercontent.com/Kyke785/V8/main/Beta",true))();
-   end,
-})
+--tab:Section(title <string>)
+local sec = tab:Section("main hun")
 
-Button:Set("main")
+--sec:Button(title <string>, callback <function>)
+sec:Button("Button", function()
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/Kyke785/Kukw/main/Hun",true))();
+  end)
+
+  --sec:Toggle(title <string>,default <boolean>, flag <string>, callback <function>)
+  local toggle = sec:Toggle("Toggle", false,"Toggle", function(t)
+    print(t)
+    end)
+
+    --[[
+        toggle:Set(state <boolean>)
+    ]]
+
+    --sec:Slider(title <string>,default <number>,max <number>,minimum <number>,increment <number>, flag <string>, callback <function>)
+    local slider = sec:Slider("Slider", 0,25,0,2.5,"Slider", function(t)
+      script.Parent.Touched:connect(function(WSChecker)
+          if not WSChecker.Parent then return end
+          
+              local humanoid = WSChecker.Parent:FindFirstChild("Humanoid")
+                  if not humanoid then return end
+                  
+                      if (humanoid.WalkSpeed ~= 25) then
+                              humanoid.Health = 0
+                                  end
+                                  end)
+      end)
+
+      --[[
+        slider:Set(state <number>)
+      ]]
+
+      --sec:Dropdown(title <string>,options <table>,default <string>, flag <string>, callback <function>)
+      local dropdown = sec:Dropdown("Dropdown", {"a","b","c","d","e"},"","Dropdown", function(t)
+        print(t)
+        end)
+
+        --[[
+            Dropdown:Refresh(options <table>, deletecurrent <boolean>)
+            Dropdown:Set(option <string>)
+        ]]
+
+        --sec:MultiDropdown(title <string>,options <table>,default <table>, flag <string>, callback <function>)
+        local multidropdown =sec:MultiDropdown("Multi Dropdown", {"a","b","c","d","e"},{"b", "c"},"Dropdown", function(t)
+          print(table.concat(t, ", "))
+          end)
+
+          --[[
+            Dropdown:Refresh(options <table>, deletecurrent <boolean>)
+            Dropdown:Set(option <table>)
+          ]]
+
+          --sec:Colorpicker(title <string>, default <color3>, flag <string>, callback <function>)
+          sec:Colorpicker("Colorpicker", Color3.fromRGB(255,255,255),"Colorpicker", function(t)
+            print(t)
+            end)
+
+            --sec:Textbox(title <string> ,disappear <boolean>, callback <function>)
+            sec:Textbox("Textbox", true, function(t)
+              print(t)
+              end)
+
+              --sec:Bind(title <string>, default <keycode>, hold <boolean>, flag <string>, callback <function>)
+              sec:Bind("Hold Bind", Enum.KeyCode.E, true, "BindHold", function(t)
+                print(t)
+                end)
+
+                sec:Bind("Normal Bind", Enum.KeyCode.F, false, "BindNormal", function()
+                  print("Bind pressed")
+                  end)
+
+                  --[[
+                    bind:Set(state <keycode>)
+                  ]]
+
+                  --sec:Label(text <string>)
+                  local label = sec:Label("Label")
+
+                  --[[
+                    label:Set(text <string>)
+                  ]]
+                  local tab2 = win:Tab("Tab 2")
+                  ]]
+                  ]]
+          ]]
+        ]]
+      ]]
+    ]]
+})
+})]]
