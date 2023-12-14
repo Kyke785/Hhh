@@ -13,7 +13,7 @@ local Window = Fluent:CreateWindow({
 })
 
 local Tabs = {
-    Main = Window:AddTab({ Title = "Main", Icon = "Atom" }),
+    Main = Window:AddTab({ Title = "Main", Icon = "atom" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "Settings" })
 }
 
