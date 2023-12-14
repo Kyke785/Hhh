@@ -5,7 +5,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 local Window = Fluent:CreateWindow({
     Title = "proton | V11 " .. Fluent.Version,
     SubTitle = "by @lyascr yt",
-    TabWidth = 160,
+    TabWidth = 180,
     Size = UDim2.fromOffset(580, 460),
     Acrylic = true,
     Theme = "Dark",
@@ -13,17 +13,17 @@ local Window = Fluent:CreateWindow({
 })
 
 local Tabs = {
-    Main = Window:AddTab({ Title = "proton", Icon = "Atom" }),
+    Main = Window:AddTab({ Title = "Main", Icon = "Atom" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "Settings" })
 }
 
 local Options = Fluent.Options
 
 Fluent:Notify({
-    Title = "Nl",
+    Title = "done",
     Content = "exe",
     SubContent = "SubContent",
-    Duration = 5
+    Duration = 50
 })
 
 Tabs.Main:AddButton({
@@ -39,6 +39,14 @@ Tabs.Main:AddButton({
     Description = "main",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/VikiChardd/Bb-script/main/Meow%20Source%20Hub"))()
+    end
+})
+
+Tabs.Main:AddButton({
+    Title = "fly",
+    Description = "main",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro69Yes/sussy-Script/main/SecuredFlyGuiv3.lua'))()
     end
 })
 
